@@ -2,12 +2,13 @@ import { itineraries } from "@/data/itineraries";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function ItineraryPage({
+export default async function ItineraryPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const itinerary = itineraries.find((i) => i.slug === params.slug);
+  const { slug } = await params;
+  const itinerary = itineraries.find((i) => i.slug === slug);
   if (!itinerary) notFound();
 
   return (

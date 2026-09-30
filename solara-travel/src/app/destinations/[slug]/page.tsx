@@ -3,12 +3,13 @@ import { itineraries } from "@/data/itineraries";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function DestinationPage({
+export default async function DestinationPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const dest = destinations.find((d) => d.slug === params.slug);
+  const { slug } = await params;
+  const dest = destinations.find((d) => d.slug === slug);
   if (!dest) notFound();
 
   const relatedItineraries = itineraries.filter(
