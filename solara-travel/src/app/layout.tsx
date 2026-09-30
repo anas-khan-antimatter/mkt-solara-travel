@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -29,6 +29,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Navigation />
         <main className="flex-1">{children}</main>
@@ -54,8 +62,8 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li>
-                  <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Destinations
+                  <a href="/itineraries" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Itineraries
                   </a>
                 </li>
                 <li>
