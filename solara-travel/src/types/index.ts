@@ -60,4 +60,7 @@ export interface QuizResult {
   title: string;
   description: string;
   image: string;
+  matchScore?: number;
+  matchLabel?: string;
+  highlights?: string[];
 }
