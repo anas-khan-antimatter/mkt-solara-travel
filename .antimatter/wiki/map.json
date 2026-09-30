@@ -1,23 +1,217 @@
 {
-  "root": "/tmp/am-ws/c-1790730355231-0ptsn",
-  "name": "c-1790730355231-0ptsn",
-  "generatedAt": "2026-09-30T01:06:26.069Z",
-  "fileCount": 1,
-  "dirCount": 1,
+  "root": "/tmp/am-ws/c-1790732957246-56nq2",
+  "name": "c-1790732957246-56nq2",
+  "generatedAt": "2026-09-30T16:50:39.754Z",
+  "fileCount": 49,
+  "dirCount": 14,
   "languages": {
-    "Markdown": 1
+    "Markdown": 9,
+    "JSON": 6,
+    "JavaScript": 2,
+    "TypeScript": 23,
+    "CSS": 1
   },
   "keyFiles": [
     "README.md"
   ],
   "directories": [
     {
-      "dir": "(root)",
-      "fileCount": 1,
+      "dir": ".antimatter/wiki",
+      "fileCount": 6,
       "files": [
+        "index.md",
+        "log.md",
+        "map.json",
+        "map.md",
+        "overview.md",
+        "schema.md"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "(root)",
+      "fileCount": 2,
+      "files": [
+        ".gitignore",
         "README.md"
       ],
       "symbols": []
+    },
+    {
+      "dir": "solara-travel",
+      "fileCount": 12,
+      "files": [
+        ".gitignore",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "components.json",
+        "eslint.config.mjs",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "README.md",
+        "tsconfig.json",
+        "vercel.json"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/public",
+      "fileCount": 5,
+      "files": [
+        "file.svg",
+        "globe.svg",
+        "next.svg",
+        "vercel.svg",
+        "window.svg"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app",
+      "fileCount": 4,
+      "files": [
+        "favicon.ico",
+        "globals.css",
+        "layout.tsx",
+        "page.tsx"
+      ],
+      "symbols": [
+        {
+          "name": "metadata",
+          "kind": "const"
+        }
+      ]
+    },
+    {
+      "dir": "solara-travel/src/app/destinations/[slug]",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/inquire",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/itineraries/[slug]",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/quiz",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/components",
+      "fileCount": 1,
+      "files": [
+        "Navigation.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/components/ui",
+      "fileCount": 9,
+      "files": [
+        "badge.tsx",
+        "button.tsx",
+        "card.tsx",
+        "carousel.tsx",
+        "dialog.tsx",
+        "input.tsx",
+        "separator.tsx",
+        "sheet.tsx",
+        "textarea.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/data",
+      "fileCount": 4,
+      "files": [
+        "destinations.ts",
+        "itineraries.ts",
+        "quiz.ts",
+        "testimonials.ts"
+      ],
+      "symbols": [
+        {
+          "name": "destinations",
+          "kind": "const"
+        },
+        {
+          "name": "itineraries",
+          "kind": "const"
+        },
+        {
+          "name": "quizQuestions",
+          "kind": "const"
+        },
+        {
+          "name": "quizResults",
+          "kind": "const"
+        },
+        {
+          "name": "testimonials",
+          "kind": "const"
+        }
+      ]
+    },
+    {
+      "dir": "solara-travel/src/lib",
+      "fileCount": 1,
+      "files": [
+        "utils.ts"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/types",
+      "fileCount": 1,
+      "files": [
+        "index.ts"
+      ],
+      "symbols": [
+        {
+          "name": "Destination",
+          "kind": "interface"
+        },
+        {
+          "name": "DayActivity",
+          "kind": "interface"
+        },
+        {
+          "name": "Itinerary",
+          "kind": "interface"
+        },
+        {
+          "name": "Testimonial",
+          "kind": "interface"
+        },
+        {
+          "name": "QuizQuestion",
+          "kind": "interface"
+        },
+        {
+          "name": "QuizResult",
+          "kind": "interface"
+        }
+      ]
     }
   ]
 }
