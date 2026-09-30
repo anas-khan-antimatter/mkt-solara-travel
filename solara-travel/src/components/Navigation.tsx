@@ -19,16 +19,16 @@ export default function Navigation() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           <Link
+            href="/itineraries"
+            className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            Itineraries
+          </Link>
+          <Link
             href="/explorer"
             className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
           >
             Explorer
-          </Link>
-          <Link
-            href="/"
-            className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
-          >
-            Destinations
           </Link>
           <Link
             href="/quiz"
@@ -38,7 +38,8 @@ export default function Navigation() {
           </Link>
           <Link
             href="/inquire"
-            className="text-sm bg-primary text-primary-foreground px-5 py-2 rounded-full hover:opacity-90 transition-all uppercase tracking-wider font-medium"
+            className="text-sm bg-primary text-primary-foreground px-5 py-2 hover:opacity-90 transition-all uppercase tracking-wider font-medium"
+            style={{ borderRadius: "0" }}
           >
             Inquire
           </Link>
