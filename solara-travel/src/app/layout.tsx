@@ -49,6 +49,11 @@ export default function RootLayout({
               </h4>
               <ul className="space-y-2 text-sm">
                 <li>
+                  <a href="/explorer" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Map Explorer
+                  </a>
+                </li>
+                <li>
                   <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">
                     Destinations
                   </a>
@@ -56,6 +61,11 @@ export default function RootLayout({
                 <li>
                   <a href="/quiz" className="text-muted-foreground hover:text-foreground transition-colors">
                     Trip Builder
+                  </a>
+                </li>
+                <li>
+                  <a href="/itineraries/amalfi-coast-5-days" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Sample Itinerary
                   </a>
                 </li>
               </ul>

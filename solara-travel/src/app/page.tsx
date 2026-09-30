@@ -92,6 +92,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Explorer CTA */}
+      <section className="py-24 px-6 md:px-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-secondary/30" />
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
+            Interactive Map
+          </p>
+          <h2 className="text-4xl md:text-5xl font-heading tracking-tight text-gradient mb-6">
+            Explore the world with Solara
+          </h2>
+          <p className="text-lg text-white/60 mb-10 max-w-xl mx-auto">
+            Navigate our interactive globe and discover the destinations that
+            call to you. Click, explore, and begin dreaming.
+          </p>
+          <Link
+            href="/explorer"
+            className="bg-primary text-primary-foreground px-10 py-4 rounded-full text-sm uppercase tracking-wider font-medium hover:opacity-90 transition-all inline-block"
+          >
+            Open Explorer
+          </Link>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-24 px-6 md:px-12 bg-secondary/50">
         <div className="max-w-7xl mx-auto">

@@ -19,6 +19,12 @@ export default function Navigation() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           <Link
+            href="/explorer"
+            className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            Explorer
+          </Link>
+          <Link
             href="/"
             className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
           >
@@ -53,6 +59,13 @@ export default function Navigation() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden glass mx-4 mt-2 rounded-2xl p-6 flex flex-col gap-4">
+          <Link
+            href="/explorer"
+            className="text-white text-lg"
+            onClick={() => setOpen(false)}
+          >
+            Explorer
+          </Link>
           <Link
             href="/"
             className="text-white text-lg"
