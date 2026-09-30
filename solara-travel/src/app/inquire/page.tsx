@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function InquirePage() {
+  const searchParams = useSearchParams();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,9 +16,11 @@ export default function InquirePage() {
     timeline: "",
     budget: "",
     message: "",
+    referral: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [quizLabel, setQuizLabel] = useState<string | null>(null);
 
   const destinations = [
     "Amalfi Coast",
@@ -26,6 +31,45 @@ export default function InquirePage() {
     "Provence",
     "Not sure — surprise me",
   ];
+
+  // Read quiz results from query params
+  useEffect(() => {
+    const quizRaw = searchParams.get("quiz");
+    const itineraryRaw = searchParams.get("itinerary");
+
+    if (quizRaw) {
+      try {
+        const quizData = JSON.parse(decodeURIComponent(quizRaw));
+        // Try to get a friendly label
+        if (quizData.q1) {
+          const landscapeLabels: Record<string, string> = {
+            coastal: "Coastal Explorer",
+            countryside: "Countryside Romantic",
+            island: "Island Seeker",
+            culture: "Culture Devotee",
+          };
+          setQuizLabel(landscapeLabels[quizData.q1] || "Custom Journey");
+          setFormData((prev) => ({
+            ...prev,
+            message: `Quiz results: ${JSON.stringify(quizData)}`,
+          }));
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    }
+
+    if (itineraryRaw) {
+      const itineraryName = itineraryRaw
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c: string) => c.toUpperCase());
+      setFormData((prev) => ({
+        ...prev,
+        destination: itineraryName,
+        message: `Interested in: ${itineraryName}`,
+      }));
+    }
+  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -48,21 +92,19 @@ export default function InquirePage() {
     return (
       <section className="min-h-screen flex items-center justify-center px-6 py-24">
         <div className="max-w-lg mx-auto text-center">
-          <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+          <div className="stamp-border inline-block px-4 py-2 mb-6">
+            <p className="passport-text text-xs text-primary/60">CONFIRMED</p>
           </div>
-          <h2 className="text-3xl font-heading tracking-tight text-gradient mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading tracking-tight text-gradient mb-4">
             Thank You
           </h2>
-          <p className="text-white/70 mb-8 leading-relaxed">
+          <p className="text-white/60 mb-8 leading-relaxed font-serif-alt italic">
             Your inquiry has been received. A Solara concierge will reach out
             within 24 hours to begin crafting your bespoke journey.
           </p>
           <Link
             href="/"
-            className="inline-block border border-white/20 text-white px-8 py-3 rounded-full text-sm uppercase tracking-wider font-medium hover:bg-white/10 transition-all"
+            className="inline-block stamp-border px-8 py-3 text-xs uppercase tracking-[0.2em] font-medium text-white/70 hover:text-white hover:bg-primary/5 transition-all"
           >
             Return Home
           </Link>
@@ -72,25 +114,33 @@ export default function InquirePage() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-24">
-      <div className="max-w-2xl mx-auto w-full">
-        <div className="text-center mb-12">
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            Begin the Conversation
-          </p>
-          <h1 className="text-4xl md:text-5xl font-heading tracking-tight text-gradient">
-            Make an Inquiry
-          </h1>
-          <p className="text-white/60 mt-4 max-w-lg mx-auto">
-            Tell us about the journey you imagine, and we will craft an
-            itinerary as unique as your vision.
-          </p>
+    <section className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+      <div className="max-w-3xl mx-auto w-full">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="stamp-border px-3 py-1">
+            <p className="passport-text text-xs text-primary/60">INQUIRY</p>
+          </div>
+          {quizLabel && (
+            <>
+              <span className="w-6 h-[1px] bg-primary/20" />
+              <span className="stamp-tag text-[9px]">{quizLabel}</span>
+            </>
+          )}
         </div>
+
+        <h1 className="text-4xl md:text-5xl font-heading tracking-tight text-white mb-4">
+          Make an Inquiry
+        </h1>
+        <p className="text-white/50 mt-2 max-w-xl mb-10 font-serif-alt italic">
+          Tell us about the journey you imagine, and we will craft an
+          itinerary as unique as your vision.
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="name" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <label htmlFor="name" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
                 Full Name
               </label>
               <input
@@ -101,11 +151,11 @@ export default function InquirePage() {
                 placeholder="Your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
                 Email
               </label>
               <input
@@ -116,14 +166,14 @@ export default function InquirePage() {
                 placeholder="your@email.com"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="phone" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <label htmlFor="phone" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
                 Phone
               </label>
               <input
@@ -133,33 +183,11 @@ export default function InquirePage() {
                 placeholder="+1 (555) 000-0000"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="destination" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
-                Preferred Destination
-              </label>
-              <select
-                id="destination"
-                name="destination"
-                value={formData.destination}
-                onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
-              >
-                <option value="" className="bg-background">Select a destination</option>
-                {destinations.map((d) => (
-                  <option key={d} value={d} className="bg-background">
-                    {d}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label htmlFor="travelers" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <label htmlFor="travelers" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
                 Travelers
               </label>
               <select
@@ -167,37 +195,58 @@ export default function InquirePage() {
                 name="travelers"
                 value={formData.travelers}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
               >
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <option key={n} value={n} className="bg-background">
-                    {n} {n === 1 ? "Traveler" : "Travelers"}
+                {[1, 2, 3, 4, 5, 6, "7+"].map((n) => (
+                  <option key={n} value={n} className="bg-background text-white">
+                    {n} {n === 1 ? "traveler" : "travelers"}
                   </option>
                 ))}
-                <option value="6+" className="bg-background">6+ Travelers</option>
               </select>
             </div>
+          </div>
+
+          <div>
+            <label htmlFor="destination" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
+              Preferred Destination
+            </label>
+            <select
+              id="destination"
+              name="destination"
+              value={formData.destination}
+              onChange={handleChange}
+              className="w-full bg-transparent border border-border/40 px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+            >
+              <option value="" className="bg-background text-white/50">Select a destination</option>
+              {destinations.map((d) => (
+                <option key={d} value={d} className="bg-background text-white">
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="timeline" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
-                Timeline
+              <label htmlFor="timeline" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
+                Preferred Timeline
               </label>
               <select
                 id="timeline"
                 name="timeline"
                 value={formData.timeline}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
               >
-                <option value="" className="bg-background">Select timeline</option>
-                <option value="ASAP" className="bg-background">ASAP</option>
-                <option value="1-3 months" className="bg-background">1-3 months</option>
-                <option value="3-6 months" className="bg-background">3-6 months</option>
-                <option value="6+ months" className="bg-background">6+ months</option>
-                <option value="Not sure" className="bg-background">Not sure</option>
+                <option value="" className="bg-background text-white/50">Select</option>
+                <option value="1-3" className="bg-background">1–3 months</option>
+                <option value="3-6" className="bg-background">3–6 months</option>
+                <option value="6+" className="bg-background">6+ months</option>
+                <option value="flexible" className="bg-background">Flexible / No rush</option>
               </select>
             </div>
             <div>
-              <label htmlFor="budget" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <label htmlFor="budget" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
                 Budget Range
               </label>
               <select
@@ -205,39 +254,48 @@ export default function InquirePage() {
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full bg-transparent border border-border/40 px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition-colors"
               >
-                <option value="" className="bg-background">Select budget</option>
-                <option value="$5k-10k" className="bg-background">$5k - $10k</option>
-                <option value="$10k-20k" className="bg-background">$10k - $20k</option>
-                <option value="$20k-50k" className="bg-background">$20k - $50k</option>
-                <option value="$50k+" className="bg-background">$50k+</option>
+                <option value="" className="bg-background text-white/50">Select</option>
+                <option value="5-10k" className="bg-background">$5k–$10k / person</option>
+                <option value="10-20k" className="bg-background">$10k–$20k / person</option>
+                <option value="20-30k" className="bg-background">$20k–$30k / person</option>
+                <option value="30k+" className="bg-background">$30k+ / person</option>
+                <option value="flexible" className="bg-background">Flexible</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
-              Your Vision
+            <label htmlFor="message" className="block text-xs uppercase tracking-wider text-muted-foreground mb-2 passport-text">
+              Your Brief
             </label>
             <textarea
               id="message"
               name="message"
               rows={5}
-              placeholder="Tell us about the experience you dream of..."
+              placeholder="Tell us about the experience you're seeking — special occasions, interests, must-haves..."
               value={formData.message}
               onChange={handleChange}
-              className="w-full bg-transparent border border-border/40 rounded-xl px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+              className="w-full bg-transparent border border-border/40 px-4 py-3 text-white placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm uppercase tracking-wider font-medium hover:opacity-90 transition-all disabled:opacity-50"
-          >
-            {loading ? "Sending..." : "Send Inquiry"}
-          </button>
+          <div className="flex justify-between items-center pt-4">
+            <Link
+              href="/quiz"
+              className="text-xs text-white/40 hover:text-white transition-colors passport-text"
+            >
+              &larr; Take the quiz
+            </Link>
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-primary text-primary-foreground px-10 py-4 text-xs uppercase tracking-[0.2em] font-medium hover:opacity-90 transition-all disabled:opacity-40"
+            >
+              {loading ? "Sending..." : "Send Inquiry"}
+            </button>
+          </div>
         </form>
       </div>
     </section>
