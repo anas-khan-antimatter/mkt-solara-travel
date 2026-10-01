@@ -17,7 +17,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           <Link
             href="/itineraries"
             className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
@@ -25,10 +25,16 @@ export default function Navigation() {
             Itineraries
           </Link>
           <Link
+            href="/local"
+            className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            Explore
+          </Link>
+          <Link
             href="/explorer"
             className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
           >
-            Explorer
+            Map
           </Link>
           <Link
             href="/quiz"
