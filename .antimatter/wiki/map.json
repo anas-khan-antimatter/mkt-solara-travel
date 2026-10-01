@@ -1,20 +1,29 @@
 {
-  "root": "/tmp/am-ws/c-1790732957246-56nq2",
-  "name": "c-1790732957246-56nq2",
-  "generatedAt": "2026-09-30T16:50:39.754Z",
-  "fileCount": 49,
-  "dirCount": 14,
+  "root": "/tmp/am-ws/c-1790877739843-v0hb8",
+  "name": "c-1790877739843-v0hb8",
+  "generatedAt": "2026-10-01T18:50:07.815Z",
+  "fileCount": 59,
+  "dirCount": 22,
   "languages": {
+    "JSON": 7,
     "Markdown": 9,
-    "JSON": 6,
-    "JavaScript": 2,
-    "TypeScript": 23,
+    "JavaScript": 4,
+    "YAML": 1,
+    "TypeScript": 29,
     "CSS": 1
   },
   "keyFiles": [
     "README.md"
   ],
   "directories": [
+    {
+      "dir": ".antimatter/lanes",
+      "fileCount": 1,
+      "files": [
+        "ship.json"
+      ],
+      "symbols": []
+    },
     {
       "dir": ".antimatter/wiki",
       "fileCount": 6,
@@ -25,6 +34,23 @@
         "map.md",
         "overview.md",
         "schema.md"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": ".github/antimatter",
+      "fileCount": 2,
+      "files": [
+        "lane-runner.mjs",
+        "store-release.mjs"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": ".github/workflows",
+      "fileCount": 1,
+      "files": [
+        "antimatter-lane.yml"
       ],
       "symbols": []
     },
@@ -85,7 +111,41 @@
       ]
     },
     {
+      "dir": "solara-travel/src/app/api/itinerary",
+      "fileCount": 1,
+      "files": [
+        "route.ts"
+      ],
+      "symbols": [
+        {
+          "name": "POST",
+          "kind": "fn"
+        }
+      ]
+    },
+    {
+      "dir": "solara-travel/src/app/api/match",
+      "fileCount": 1,
+      "files": [
+        "route.ts"
+      ],
+      "symbols": [
+        {
+          "name": "GET",
+          "kind": "fn"
+        }
+      ]
+    },
+    {
       "dir": "solara-travel/src/app/destinations/[slug]",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/explorer",
       "fileCount": 1,
       "files": [
         "page.tsx"
@@ -98,10 +158,31 @@
       "files": [
         "page.tsx"
       ],
+      "symbols": [
+        {
+          "name": "dynamic",
+          "kind": "const"
+        }
+      ]
+    },
+    {
+      "dir": "solara-travel/src/app/itineraries",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
       "symbols": []
     },
     {
       "dir": "solara-travel/src/app/itineraries/[slug]",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/local",
       "fileCount": 1,
       "files": [
         "page.tsx"
@@ -142,8 +223,9 @@
     },
     {
       "dir": "solara-travel/src/data",
-      "fileCount": 4,
+      "fileCount": 5,
       "files": [
+        "coordinates.ts",
         "destinations.ts",
         "itineraries.ts",
         "quiz.ts",
@@ -151,12 +233,28 @@
       ],
       "symbols": [
         {
+          "name": "getPointOnGlobe",
+          "kind": "fn"
+        },
+        {
+          "name": "GeoPoint",
+          "kind": "interface"
+        },
+        {
+          "name": "destinationCoordinates",
+          "kind": "const"
+        },
+        {
           "name": "destinations",
           "kind": "const"
         },
         {
           "name": "itineraries",
           "kind": "const"
+        },
+        {
+          "name": "scoreQuizAnswers",
+          "kind": "fn"
         },
         {
           "name": "quizQuestions",

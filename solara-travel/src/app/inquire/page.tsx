@@ -2,13 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-
-export const dynamic = "force-dynamic";
 
 export default function InquirePage() {
-  const searchParams = useSearchParams();
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,10 +29,11 @@ export default function InquirePage() {
     "Not sure — surprise me",
   ];
 
-  // Read quiz results from query params
+  // Read quiz results from query params (client component — use window URL)
   useEffect(() => {
-    const quizRaw = searchParams.get("quiz");
-    const itineraryRaw = searchParams.get("itinerary");
+    const params = new URLSearchParams(window.location.search);
+    const quizRaw = params.get("quiz");
+    const itineraryRaw = params.get("itinerary");
 
     if (quizRaw) {
       try {
