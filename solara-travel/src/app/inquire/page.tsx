@@ -67,7 +67,7 @@ export default function InquirePage() {
         message: `Interested in: ${itineraryName}`,
       }));
     }
-  }, [searchParams]);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
