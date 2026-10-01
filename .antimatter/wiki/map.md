@@ -1,9 +1,9 @@
 # Workspace Map — c-1790732957246-56nq2
-_Generated 2026-09-30 · 49 files · 14 directories_  
+_Generated 2026-10-01 · 54 files · 18 directories_  
 _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Map Workspace". Do not hand-edit._
 
 ## Languages
-- TypeScript: 23
+- TypeScript: 28
 - Markdown: 9
 - JSON: 6
 - JavaScript: 2
@@ -29,10 +29,24 @@ _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Ma
 - symbols: metadata (const)
 - files: favicon.ico, globals.css, layout.tsx, page.tsx
 
+### `solara-travel/src/app/api/itinerary` — 1 file
+- symbols: POST (fn)
+- files: route.ts
+
+### `solara-travel/src/app/api/match` — 1 file
+- symbols: GET (fn)
+- files: route.ts
+
 ### `solara-travel/src/app/destinations/[slug]` — 1 file
 - files: page.tsx
 
+### `solara-travel/src/app/explorer` — 1 file
+- files: page.tsx
+
 ### `solara-travel/src/app/inquire` — 1 file
+- files: page.tsx
+
+### `solara-travel/src/app/itineraries` — 1 file
 - files: page.tsx
 
 ### `solara-travel/src/app/itineraries/[slug]` — 1 file
@@ -47,9 +61,9 @@ _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Ma
 ### `solara-travel/src/components/ui` — 9 files
 - files: badge.tsx, button.tsx, card.tsx, carousel.tsx, dialog.tsx, input.tsx, separator.tsx, sheet.tsx, textarea.tsx
 
-### `solara-travel/src/data` — 4 files
-- symbols: destinations (const), itineraries (const), quizQuestions (const), quizResults (const), testimonials (const)
-- files: destinations.ts, itineraries.ts, quiz.ts, testimonials.ts
+### `solara-travel/src/data` — 5 files
+- symbols: getPointOnGlobe (fn), GeoPoint (interface), destinationCoordinates (const), destinations (const), itineraries (const), scoreQuizAnswers (fn), quizQuestions (const), quizResults (const), testimonials (const)
+- files: coordinates.ts, destinations.ts, itineraries.ts, quiz.ts, testimonials.ts
 
 ### `solara-travel/src/lib` — 1 file
 - files: utils.ts
