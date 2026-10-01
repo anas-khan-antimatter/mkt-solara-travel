@@ -25,6 +25,12 @@ export default function Navigation() {
             Itineraries
           </Link>
           <Link
+            href="/local"
+            className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            Local
+          </Link>
+          <Link
             href="/explorer"
             className="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-widest"
           >
