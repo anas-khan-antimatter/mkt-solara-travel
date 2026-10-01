@@ -1,14 +1,14 @@
 {
   "root": "/tmp/am-ws/c-1790732957246-56nq2",
   "name": "c-1790732957246-56nq2",
-  "generatedAt": "2026-09-30T16:50:39.754Z",
-  "fileCount": 49,
-  "dirCount": 14,
+  "generatedAt": "2026-10-01T04:22:31.297Z",
+  "fileCount": 54,
+  "dirCount": 18,
   "languages": {
     "Markdown": 9,
     "JSON": 6,
     "JavaScript": 2,
-    "TypeScript": 23,
+    "TypeScript": 28,
     "CSS": 1
   },
   "keyFiles": [
@@ -85,6 +85,32 @@
       ]
     },
     {
+      "dir": "solara-travel/src/app/api/itinerary",
+      "fileCount": 1,
+      "files": [
+        "route.ts"
+      ],
+      "symbols": [
+        {
+          "name": "POST",
+          "kind": "fn"
+        }
+      ]
+    },
+    {
+      "dir": "solara-travel/src/app/api/match",
+      "fileCount": 1,
+      "files": [
+        "route.ts"
+      ],
+      "symbols": [
+        {
+          "name": "GET",
+          "kind": "fn"
+        }
+      ]
+    },
+    {
       "dir": "solara-travel/src/app/destinations/[slug]",
       "fileCount": 1,
       "files": [
@@ -93,7 +119,23 @@
       "symbols": []
     },
     {
+      "dir": "solara-travel/src/app/explorer",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
       "dir": "solara-travel/src/app/inquire",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/itineraries",
       "fileCount": 1,
       "files": [
         "page.tsx"
@@ -142,8 +184,9 @@
     },
     {
       "dir": "solara-travel/src/data",
-      "fileCount": 4,
+      "fileCount": 5,
       "files": [
+        "coordinates.ts",
         "destinations.ts",
         "itineraries.ts",
         "quiz.ts",
@@ -151,12 +194,28 @@
       ],
       "symbols": [
         {
+          "name": "getPointOnGlobe",
+          "kind": "fn"
+        },
+        {
+          "name": "GeoPoint",
+          "kind": "interface"
+        },
+        {
+          "name": "destinationCoordinates",
+          "kind": "const"
+        },
+        {
           "name": "destinations",
           "kind": "const"
         },
         {
           "name": "itineraries",
           "kind": "const"
+        },
+        {
+          "name": "scoreQuizAnswers",
+          "kind": "fn"
         },
         {
           "name": "quizQuestions",
