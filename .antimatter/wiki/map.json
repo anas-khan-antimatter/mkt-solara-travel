@@ -1,14 +1,14 @@
 {
   "root": "/tmp/am-ws/c-1790732957246-56nq2",
   "name": "c-1790732957246-56nq2",
-  "generatedAt": "2026-10-01T04:22:31.297Z",
-  "fileCount": 54,
-  "dirCount": 18,
+  "generatedAt": "2026-10-01T15:35:15.592Z",
+  "fileCount": 55,
+  "dirCount": 19,
   "languages": {
     "Markdown": 9,
     "JSON": 6,
     "JavaScript": 2,
-    "TypeScript": 28,
+    "TypeScript": 29,
     "CSS": 1
   },
   "keyFiles": [
@@ -144,6 +144,14 @@
     },
     {
       "dir": "solara-travel/src/app/itineraries/[slug]",
+      "fileCount": 1,
+      "files": [
+        "page.tsx"
+      ],
+      "symbols": []
+    },
+    {
+      "dir": "solara-travel/src/app/local",
       "fileCount": 1,
       "files": [
         "page.tsx"

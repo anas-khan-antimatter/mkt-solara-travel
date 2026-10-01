@@ -1,9 +1,9 @@
 # Workspace Map — c-1790732957246-56nq2
-_Generated 2026-10-01 · 54 files · 18 directories_  
+_Generated 2026-10-01 · 55 files · 19 directories_  
 _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Map Workspace". Do not hand-edit._
 
 ## Languages
-- TypeScript: 28
+- TypeScript: 29
 - Markdown: 9
 - JSON: 6
 - JavaScript: 2
@@ -50,6 +50,9 @@ _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Ma
 - files: page.tsx
 
 ### `solara-travel/src/app/itineraries/[slug]` — 1 file
+- files: page.tsx
+
+### `solara-travel/src/app/local` — 1 file
 - files: page.tsx
 
 ### `solara-travel/src/app/quiz` — 1 file
