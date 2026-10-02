@@ -1,5 +1,5 @@
-# Workspace Map — c-1790877739843-v0hb8
-_Generated 2026-10-01 · 59 files · 22 directories_  
+# Workspace Map — c-1790884289720-z0z5s
+_Generated 2026-10-02 · 59 files · 22 directories_  
 _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Map Workspace". Do not hand-edit._
 
 ## Languages
@@ -54,7 +54,6 @@ _Deterministic structural map. Regenerate with the `map` tool or "Antimatter: Ma
 - files: page.tsx
 
 ### `solara-travel/src/app/inquire` — 1 file
-- symbols: dynamic (const)
 - files: page.tsx
 
 ### `solara-travel/src/app/itineraries` — 1 file
